@@ -59,8 +59,8 @@ def perfTest():
     net.pingFull()   #Do pingFull
     # print('Test bandwidth between h1 and h2')
     h1,h2,h15=net.get('h1','h2','h15')    #Get nodes by name
-    # h1.cmdPrint('iperf -s -u -I 1')     #pod 0: h1 server
-    # h15.cmdPrint('iperf -s -u -I 1')    #pod 3: h15 server
+    h1.cmdPrint('iperf -s -u -I 1')     #pod 0: h1 server
+    h15.cmdPrint('iperf -s -u -I 1')    #pod 3: h15 server
     h1.popen('iperf -s -u -I 1'+' > 0656526_pod0_server_report',shell=True)
     h15.popen('iperf -s -u -I 1'+' > 0656526_pod3_server_report',shell=True)
     h2.cmdPrint('iperf -c '+h1.IP()+' -u -t 10 -I 1 -b 100m'+ ' > 0656526_pod0_connect_report')   #pod 0: h2 client
