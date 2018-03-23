@@ -23,10 +23,10 @@ class MyTopo( Topo ):
 
         # Add hosts and switches
         for c in range(4):
-            c_tmp=self.addSwitch('c%s'%(c+1))   # 4 core switches
+            c_tmp=self.addSwitch('s_c%s'%(c+1))   # 4 core switches
             CoreSwitch.append(c_tmp)
         for a in range(8):
-            a_tmp=self.addSwitch('a%s'%(a+1))   # 8 aggr switches
+            a_tmp=self.addSwitch('s_a%s'%(a+1))   # 8 aggr switches
             AggrSwitch.append(a_tmp)
             if (a%2)==0:
                 self.addLink(CoreSwitch[0],a_tmp,bw=1000,loss=2)
@@ -35,7 +35,7 @@ class MyTopo( Topo ):
                 self.addLink(CoreSwitch[2],a_tmp,bw=1000,loss=2)
                 self.addLink(CoreSwitch[3],a_tmp,bw=1000,loss=2)
         for e in range(8):
-            e_tmp=self.addSwitch('e%s'%(e+1))   # 8 edge switches
+            e_tmp=self.addSwitch('s_e%s'%(e+1))   # 8 edge switches
             EdgeSwitch.append(e_tmp)
             self.addLink(AggrSwitch[e],e_tmp,bw=100)
             if (e%2)==0:
